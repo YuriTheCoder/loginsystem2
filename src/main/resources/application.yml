@@ -1,0 +1,67 @@
+spring:
+  application:
+    name: auth-system
+  
+  # Database Configuration
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  
+  # JPA Configuration
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  
+  # H2 Console (for development)
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  
+  # Mail Configuration (for password recovery)
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:your-email@gmail.com}
+    password: ${MAIL_PASSWORD:your-app-password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+# JWT Configuration
+jwt:
+  secret: ${JWT_SECRET:dGhpc0lzQVZlcnlTZWN1cmVKV1RTZWNyZXRLZXlGb3JIUzUxMkFsZ29yaXRobVRoYXRJczY0Qnl0ZXNMb25nRm9yTWF4aW11bVNlY3VyaXR5}
+  expiration: 86400000 # 24 hours in milliseconds
+  refresh-expiration: 2592000000 # 30 days in milliseconds
+
+# Swagger Configuration
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+
+# Logging
+logging:
+  level:
+    com.example.authsystem: INFO
+    org.springframework.security: WARN
+    org.springframework.web: WARN
+    org.springframework.web.filter.CommonsRequestLoggingFilter: INFO
+
+# Server Configuration
+server:
+  port: 8081
+  servlet:
+    context-path: /api

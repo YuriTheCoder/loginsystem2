@@ -36,8 +36,8 @@ A comprehensive Spring Boot REST API for authentication and authorization with J
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd auth-system
+   gh repo clone YuriTheCoder/loginsystem2
+   cd loginsystem2
    ```
 
 2. **Configure application properties** (optional)
